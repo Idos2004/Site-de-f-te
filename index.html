@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariage Mariam & David - Le 14 Février 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJklWEuFX/eNx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-gold: #B8860B; /* Doré/Ocre */
+            --secondary-green: #2E8B57; /* Vert Émeraude */
+            --neutral-cream: #F8F8F8; /* Blanc cassé/Crème */
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--neutral-cream);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            /* REMPLACEZ CETTE URL PAR VOTRE PROPRE PHOTO DE MARIAGE. Ex: url('./images/votre_photo_hero.jpg') */
+            background: url('asserts/couple-443600_1920.jpg') no-repeat center center/cover;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden; /* Pour contenir les motifs */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Assombrir l'image pour la lisibilité du texte */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            color: var(--text-light); /* Les titres sont blancs sur la photo */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .hero-content h3 {
+            font-size: 2.5rem;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        /* Motifs traditionnels (exemple CSS simple) */
+        .hero-section::before, .hero-section::after {
+            content: '';
+            position: absolute;
+            z-index: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(46, 139, 87, 0.1); /* Vert émeraude très transparent */
+            opacity: 0.8;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-section::before {
+            top: -100px;
+            left: -100px;
+            transform: rotate(45deg);
+        }
+        .hero-section::after {
+            bottom: -100px;
+            right: -100px;
+            transform: rotate(-45deg);
+        }
+
+        /* Notre Histoire Section */
+        .story-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Programme Section */
+        .program-item {
+            background-color: #ffffff;
+            border-left: 5px solid var(--primary-gold);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .program-item:hover {
+            transform: translateY(-5px);
+        }
+        .program-item h4 {
+            color: var(--secondary-green);
+            font-weight: 600;
+        }
+        .program-item .time {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+        .program-item .location {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Google Maps Section */
+        #map {
+            height: 500px; /* Hauteur de la carte */
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .location-list a {
+            color: var(--secondary-green);
+            text-decoration: none;
+        }
+        .location-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Vidéo Section */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Galerie Photo */
+        .carousel-item img {
+            max-height: 600px; /* Limite la hauteur des images du carrousel */
+            object-fit: contain; /* Ou 'cover' si vous préférez qu'elles remplissent l'espace */
+            width: 100%;
+            border-radius: 8px;
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 1rem;
+        }
+
+        /* RSVP Section */
+        .rsvp-form {
+            background-color: #ffffff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .rsvp-form .form-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .rsvp-form .btn-primary {
+            background-color: var(--primary-gold);
+            border-color: var(--primary-gold);
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .rsvp-form .btn-primary:hover {
+            background-color: #a07a0a; /* Ton plus foncé pour le hover */
+            border-color: #a07a0a;
+        }
+
+        /* Musique Section */
+        .music-player {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .music-player iframe {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer / Infos Pratiques */
+        footer {
+            background-color: var(--secondary-green);
+            color: var(--text-light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        footer a {
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .social-icons a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .hero-content h3 {
+                font-size: 1.8rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            .section-padding {
+                padding: 3rem 0;
+            }
+            .story-section .row {
+                flex-direction: column-reverse; /* Met l'image en premier sur mobile */
+            }
+            .story-section .col-md-6 {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Mariam & David</h1>
+            <h3>Nous nous marions !</h3>
+            <p>Le 14 Février 2026 à Cotonou</p>
+        </div>
+    </section>
+
+    <section id="notre-histoire" class="section-padding bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2">
+                    <h2 class="mb-4 text-center text-md-start">Notre histoire, nos chemins qui se croisent</h2>
+                    <p class="lead">Certains disent que le destin fait bien les choses, et c'est ce que nous pensons de notre rencontre. Mariam, avec son sourire lumineux et son amour des traditions, et David, passionné par l'innovation et charmé par la culture béninoise, se sont rencontrés lors d'un événement culturel à Cotonou. Ce fut un coup de foudre, une connexion instantanée entre deux âmes que tout semblait rapprocher.</p>
+                    <p>Depuis ce jour, notre amour n'a cessé de grandir, nourri par le respect mutuel, la joie de vivre et le partage de nos cultures. Chaque étape de notre parcours a été une nouvelle page de notre belle histoire, des balades sur les plages de Fidjrossè aux discussions passionnées sur l'avenir. Aujourd'hui, nous sommes plus que prêts à sceller notre union, et nous sommes impatients de partager ce nouveau chapitre avec vous !</p>
+                </div>
+                <div class="col-md-6 order-md-1 text-center">
+                    <img src="asserts/wedding-1770860_1280.jpg" alt="Photo de Mariam et David" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programme" class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5">Le Grand Jour, Étape par Étape</h2>
+            <p class="text-center lead mb-5">Votre présence est le plus beau des cadeaux. Voici le déroulement de cette journée mémorable :</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="program-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-handshake fa-2x me-3" style="color: var(--primary-gold);"></i>
+                            <div>
+                                <div class="time">09h00</div>
+                                <h4>Cérémonie de Dot Traditionnelle</h4>
+                            </div>
+                        </div>
+                        <p class="location">Résidence de la famille Gnacadja, Cotonou</p>
+                        <p>Un moment intime et solennel où nos familles se réunissent pour honorer nos coutumes et sceller nos liens selon les traditions béninoises.</p>
+                    </div>
+                    <div class="program-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-university fa-2x me-3" style="color: var(--primary-gold);"></i>
+                            <div>
+                                <div class="time">14h00</div>
+                                <h4>Cérémonie Civile à la Mairie</h4>
+                            </div>
+                        </div>
+                        <p class="location">Mairie de Cotonou, Place de l'Indépendance, Cotonou</p>
+                        <p>L'officialisation de notre union devant la loi. Un instant de joie et d'engagement mutuel.</p>
+                    </div>
+                    <div class="program-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-church fa-2x me-3" style="color: var(--primary-gold);"></i>
+                            <div>
+                                <div class="time">16h00</div>
+                                <h4>Cérémonie Religieuse</h4>
+                            </div>
+                        </div>
+                        <p class="location">Église Saint-Michel, Avenue Jean-Paul II, Cotonou</p>
+                        <p>Un moment de recueillement et de bénédiction de notre union sous le regard divin.</p>
+                    </div>
+                    <div class="program-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-champagne-glasses fa-2x me-3" style="color: var(--primary-gold);"></i>
+                            <div>
+                                <div class="time">19h00</div>
+                                <h4>Réception Festive</h4>
+                            </div>
+                        </div>
+                        <p class="location">Salle de Fête "L'Éclat", Route de Ouidah, Calavi</p>
+                        <p>La grande fête ! Préparez-vous à danser, chanter et partager un délicieux repas. Une ambiance festive et conviviale vous attend jusqu'au bout de la nuit !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="acces" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Comment nous rejoindre ?</h2>
+            <p class="text-center lead mb-4">Pour vous faciliter l'accès à nos différents lieux de célébration, voici une carte interactive et les adresses précises.</p>
+            <div ><img id="map" src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/02/google-maps-2961754.jpg?tf=3840x" alt="Localisation"></div>
+            <div class="row justify-content-center mt-4 location-list">
+                <div class="col-md-10">
+                    <h3 class="mb-3 text-center">Adresses détaillées :</h3>
+                    <ul class="list-unstyled text-center">
+                        <li><i class="fas fa-map-marker-alt me-2" style="color: var(--secondary-green);"></i> **Cérémonie de Dot :** Résidence Famille Gnacadja, [Numéro de Rue], [Nom de la Rue], Cotonou. <a href="https://www.google.com/maps/search/?api=1&query=R%C3%A9sidence+Famille+Gnacadja,+Cotonou" target="_blank">(Obtenir l'itinéraire)</a></li>
+                        <li><i class="fas fa-map-marker-alt me-2" style="color: var(--secondary-green);"></i> **Mairie :** Mairie de Cotonou, Place de l'Indépendance, Cotonou. <a href="https://www.google.com/maps/search/?api=1&query=Mairie+de+Cotonou,+Place+de+l%27Ind%C3%A9pendance" target="_blank">(Obtenir l'itinéraire)</a></li>
+                        <li><i class="fas fa-map-marker-alt me-2" style="color: var(--secondary-green);"></i> **Cérémonie Religieuse :** Église Saint-Michel, Avenue Jean-Paul II, Cotonou. <a href="https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Michel,+Avenue+Jean-Paul+II,+Cotonou" target="_blank">(Obtenir l'itinéraire)</a></li>
+                        <li><i class="fas fa-map-marker-alt me-2" style="color: var(--secondary-green);"></i> **Réception :** Salle de Fête "L'Éclat", Route de Ouidah, Calavi. <a href="https://www.google.com/maps/search/?api=1&query=Salle+de+F%C3%AAte+L%27%C3%89clat,+Route+de+Ouidah,+Calavi" target="_blank">(Obtenir l'itinéraire)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video" class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5">Un aperçu de notre joie</h2>
+            <p class="text-center lead mb-4">Plongez avec nous dans les coulisses de nos préparatifs et découvrez l'esprit qui animera notre mariage. Préparez vos mouchoirs, l'émotion est au rendez-vous !</p>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/NT0lIaErNQo?si=FjaLD-VUU8oFQfHQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Nos moments précieux en images</h2>
+            <p class="text-center lead mb-4">Quelques clichés de notre parcours, des éclats de rire et des souvenirs que nous aimons partager avec vous.</p>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000"> <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="asserts/couple-1869206_1280.jpg" class="d-block w-100" alt="Photo de couple joyeux">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="asserts/couple-7263799_1280.jpg" class="d-block w-100" alt="Photo de moment traditionnel">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="asserts/couple-955926_1280.jpg" class="d-block w-100" alt="Photo de souvenir de voyage">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="asserts/easter-bunny-95096_1280.jpg" class="d-block w-100" alt="Photo de préparatifs de mariage">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="asserts/people-2594745_1280.jpg" class="d-block w-100" alt="Photo de complicité du couple">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Précédent</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Suivant</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5">Confirmez votre présence</h2>
+            <p class="text-center lead mb-4">Afin de nous aider à organiser au mieux ce jour si spécial, nous vous serions reconnaissants de bien vouloir confirmer votre présence avant le **15 Janvier 2026**.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="rsvp-form">
+                        <form id="rsvpForm" action="https://formspree.io/f/manbwloo" method="POST">
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Nom(s) & Prénom(s) :</label>
+                                <input type="text" class="form-control" id="fullName" name="Nom et Prenom(s)" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="adults" class="form-label">Nombre d'adultes présents :</label>
+                                <select class="form-select" id="adults" name="Nombre d'adultes" required>
+                                    <option value="">Sélectionnez</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5+">5+</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="children" class="form-label">Nombre d'enfants présents (moins de 12 ans) :</label>
+                                <select class="form-select" id="children" name="Nombre d'enfants">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4+">4+</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Je serai présent(e) à :</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="Presence Ceremonie Dot" value="Oui" id="checkDot">
+                                    <label class="form-check-label" for="checkDot">La Cérémonie de Dot</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="Presence Mairie" value="Oui" id="checkMairie">
+                                    <label class="form-check-label" for="checkMairie">La Cérémonie Civile à la Mairie</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="Presence Religieuse" value="Oui" id="checkReligious">
+                                    <label class="form-check-label" for="checkReligious">La Cérémonie Religieuse</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="Presence Reception" value="Oui" id="checkReception" checked>
+                                    <label class="form-check-label" for="checkReception">La Réception Festive</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="allergies" class="form-label">Allergies ou régimes alimentaires spécifiques :</label>
+                                <textarea class="form-control" id="allergies" name="Allergies / Regimes" rows="3"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Un petit mot pour les mariés (facultatif) :</label>
+                                <textarea class="form-control" id="message" name="Message pour les maries" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Envoyer ma réponse</button>
+                            <p id="formStatus" class="mt-3 text-center" style="display:none;"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="musique" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">L'ambiance en avant-première !</h2>
+            <p class="text-center lead mb-4">Plongez dans l'univers musical de notre mariage avec cette playlist qui mélange nos racines traditionnelles béninoises et des sonorités modernes qui nous font vibrer.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="music-player">
+                        <div class="container my-5">
+                            <div class="card mx-auto shadow" style="max-width: 500px;">
+                                <img src="https://ichef.bbci.co.uk/images/ic/960x540/p03h3sd3.jpg" class="card-img-top img-fluid" alt="Kiss Daniel">
+                                <div class="card-body text-center">
+                                  <h5 class="card-title">Kiss Daniel - Titre de la chanson</h5>
+                                  <audio controls class="w-100 mt-3">
+                                    <source src="asserts/Kiss Daniel.mp3" type="audio/mpeg">
+                                    Votre navigateur ne supporte pas l’audio HTML5.
+                                  </audio>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3">🎧 **Morceaux en vedette :**</p>
+                        <ul class="list-unstyled">
+                            <li>"Môkônô" - Gangbé Brass Band (Afrobeat traditionnel)</li>
+                            <li>"Fifa" - Angélique Kidjo (World Music / Pop)</li>
+                            <li>"Yéké Yéké" - Mory Kanté (Afro-Pop)</li>
+                            <li>"Spirit" - Beyoncé (Lion King: The Gift - avec des influences africaines)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h2 class="mb-4 text-light">Des questions ? On est là ! & Un grand merci !</h2>
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-8">
+                    <p class="lead mb-4">Nous voulons que votre venue soit la plus agréable possible. N'hésitez pas à nous contacter si vous avez des interrogations !</p>
+
+                    <h3 class="mb-3 text-light">Quelques Infos Pratiques :</h3>
+                    <p>Votre présence est le plus beau des cadeaux. Si vous souhaitez néanmoins nous gâter davantage, une urne sera à disposition le jour J pour nous aider à réaliser notre voyage de noces de rêve !</p>
+                    <p>Nous vous encourageons à porter des tenues traditionnelles chic ou des tenues de soirée élégantes, avec une touche de couleur si vous le souhaitez !</p>
+                    <p>
+                        **Hébergement Recommandé :**
+                        <br> <a href="https://www.booking.com/city/bj/cotonou.fr.html" target="_blank">Faites votre choix ici</a>
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="mb-3 text-light">Contacts Utiles pour le Jour J :</h3>
+            <p>Pour toute question urgente le jour du mariage, merci de contacter nos témoins dévoués :</p>
+            <ul class="list-unstyled mb-4">
+                <li><i class="fas fa-phone-alt me-2" style="color: var(--primary-gold);"></i> **Fatima (Témoin de Mariam) :** +229 XX XX XX XX</li>
+                <li><i class="fas fa-phone-alt me-2" style="color: var(--primary-gold);"></i> **Julien (Témoin de David) :** +229 XX XX XX XX</li>
+                <li><i class="fas fa-envelope me-2" style="color: var(--primary-gold);"></i> Pour toute autre question avant le 1er Février 2026 : <a href="mailto:mariage.mariametdavid@email.com" class="text-light">mariage.mariametdavid@email.com</a></li>
+            </ul>
+
+            <h3 class="mb-4 text-light">Un immense merci du fond du cœur !</h3>
+            <p class="lead mb-4">Votre présence rendra ce jour encore plus spécial. Nous avons hâte de célébrer notre union entourés de tous ceux que nous aimons et de partager avec vous la richesse de nos traditions et notre joie infinie. Merci d'être à nos côtés pour ce nouveau chapitre de notre vie !</p>
+            <p class="h4 text-light mb-4">Avec tout notre amour,</p>
+            <p class="h3 text-light mb-5">**Mariam & David**</p>
+
+            <div class="social-icons mb-3">
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            <p class="text-light small mb-0">© 2026 Mariage Mariam & David | #MariamEtDavid2026</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eP5j6nCkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/" crossorigin="anonymous"></script>
+
+    <script>
+        // REMPLACEZ 'YOUR_Maps_API_KEY' par votre clé API Google Maps RÉELLE.
+        // N'oubliez pas d'activer les APIs 'Maps JavaScript API' et 'Places API' dans votre console Google Cloud.
+        const Maps_API_KEY = 'YOUR_Maps_API_KEY'; 
+
+        function initMap() {
+
+            // Liste des lieux avec leurs coordonnées RÉELLES (à ajuster !) et adresses complètes
+            const locations = [
+                { 
+                    title: "Cérémonie de Dot", 
+                    lat: 6.3750, lng: 2.4000, // EXEMPLE: Coordonnées de la famille Gnacadja
+                    address: "Résidence de la famille Gnacadja, Rue de la Joie, Cotonou",
+                    mapLink: "https://www.google.com/maps/search/?api=1&query=R%C3%A9sidence+Famille+Gnacadja,+Rue+de+la+Joie,+Cotonou"
+                },
+                { 
+                    title: "Mairie de Cotonou", 
+                    lat: 6.3685, lng: 2.4300, 
+                    address: "Mairie de Cotonou, Place de l'Indépendance, Cotonou",
+                    mapLink: "https://www.google.com/maps/search/?api=1&query=Mairie+de+Cotonou,+Place+de+l%27Ind%C3%A9pendance,+Cotonou"
+                },
+                { 
+                    title: "Église Saint-Michel", 
+                    lat: 6.3550, lng: 2.4280, 
+                    address: "Église Saint-Michel, Avenue Jean-Paul II, Cotonou",
+                    mapLink: "https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Michel,+Avenue+Jean-Paul+II,+Cotonou"
+                },
+                { 
+                    title: "Salle de Fête L'Éclat", 
+                    lat: 6.4200, lng: 2.3600, 
+                    address: "Salle de Fête L'Éclat, Route de Ouidah, Calavi",
+                    mapLink: "https://www.google.com/maps/search/?api=1&query=Salle+de+F%C3%AAte+L%27%C3%89clat,+Route+de+Ouidah,+Calavi"
+                }
+            ];
+
+            locations.forEach(loc => {
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<h6>${loc.title}</h6><p>${loc.address}</p><p><a href="${loc.mapLink}" target="_blank">Obtenir l'itinéraire</a></p>`
+                });
+
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=${Maps_API_KEY}&callback=initMap"></script>
+
+    <script>
+        var form = document.getElementById("rsvpForm");
+        var status = document.getElementById("formStatus");
+
+        async function handleSubmit(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            var data = new FormData(event.target);
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.style.display = "block";
+                    status.style.color = "green";
+                    status.textContent = "Merci ! Votre réponse a bien été enregistrée. Au plaisir de vous retrouver !";
+                    form.reset(); // Réinitialise le formulaire après envoi réussi
+                } else {
+                    const responseData = await response.json();
+                    if (responseData.errors) {
+                        status.style.display = "block";
+                        status.style.color = "red";
+                        status.textContent = responseData.errors.map(error => error.message).join(", ");
+                    } else {
+                        status.style.display = "block";
+                        status.style.color = "red";
+                        status.textContent = "Oops! Une erreur s'est produite lors de l'envoi de votre réponse.";
+                    }
+                }
+            } catch (error) {
+                status.style.display = "block";
+                status.style.color = "red";
+                status.textContent = "Oops! Une erreur réseau s'est produite. Vérifiez votre connexion.";
+            }
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
+
+</body>
+</html>
